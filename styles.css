@@ -1,0 +1,232 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f9; /* Fond léger */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00CFFF;
+    height: 230px;
+    margin-bottom: 40px;
+    border-radius: 6px;
+    box-shadow: 0px 8px 17px 1px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    height: 180px;
+    max-width: 100%;
+}
+
+/* Circle Layout */
+.circle-layout {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Cercle central */
+.center-circle {
+    position: relative; /* Point de référence aux outils*/
+    width: 300px; 
+    height: 300px; /* Même taille que la largeur */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent; 
+}
+
+/* Animation pour le cercle décoratif */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.circle-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    animation: rotate 20s linear infinite; /* Rotation fluide en continu */
+}
+
+/* Animation d’apparition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.logo-center {
+    animation: fadeIn 1s ease-in-out;
+    width: 40%; /* S’adapte au logo */
+    z-index: 1; /* Assure que le logo reste devant */
+}
+
+
+/* Tool Circles */
+.tool-circle {
+    animation: fadeIn 1s ease-in-out;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0; /* Invisible par défaut */
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: rgba(0, 217, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    opacity: 0.7; /* Réduction de l'opacité par défaut */
+    transform-origin: center; /* Origine de la transformation fixée au centre */
+    transition: transform 0.3s, opacity 0.3s; /* Transition fluide */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Positionnement des outils autour du cercle */
+/* Xplorer - Nord */
+.tool-circle.xplorer {
+    top: -10px; /* 10px au-dessus du cercle */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Reste bien centré */
+}
+
+/* Reporter - Est */
+.tool-circle.reporter {
+    top: 50%;
+    right: -10px; /* 10px à droite du cercle */
+    transform: translate(-50%, -50%); /* Reste bien centré */
+}
+
+/* Tracks - Sud */
+.tool-circle.tracks {
+    bottom: -10px; /* 10px en dessous du cercle */
+    left: 50%;
+    transform: translate(-50%, 50%); /* Reste bien centré */
+}
+
+/* Ads - Ouest */
+.tool-circle.adds {
+    top: 50%;
+    left: -10px; /* 10px à gauche du cercle */
+    transform: translate(-50%, -50%); /* Reste bien centré */
+}
+
+/* Effets au survol */
+.tool-circle:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Accentuation de l'ombre */
+    opacity: 1;
+}
+
+
+.tool-circle img {
+    width: 60px;
+    height: 60px;
+}
+
+.tool-circle p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #00CFFF;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer {
+    height: 40px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .circle-layout {
+        height: 400px;
+    }
+
+    .center-circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    .logo-center {
+        width: 60%;
+    }
+
+    .tool-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .tool-circle img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .circle-layout {
+        height: 300px;
+    }
+
+    .center-circle {
+        width: 150px;
+        height: 150px;
+    }
+
+    .logo-center {
+        width: 50%;
+    }
+
+    .tool-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .tool-circle img {
+        width: 30px;
+        height: 30px;
+    }
+}
